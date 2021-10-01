@@ -23,7 +23,7 @@ for($i = 0;$i < $potencias;$i++) {
         echo "<td>" . pow(2,$i) . "</td>";
         echo "</tr>";
     }
-    if (pow(2,$i) == 8) {
+    if (pow(2,$i) == 32) {
         break;
     }
 }
