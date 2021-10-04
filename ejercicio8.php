@@ -17,12 +17,13 @@
 $potencias = 7;
 
 for($i = 0;$i < $potencias;$i++) {
-    if($i != 4) {
-        echo "<tr>";
-        echo "<td>" . $i . "</td>";
-        echo "<td>" . pow(2,$i) . "</td>";
-        echo "</tr>";
+    if($i == 4) {
+        continue;
     }
+    echo "<tr>";
+    echo "<td>" . $i . "</td>";
+    echo "<td>" . pow(2,$i) . "</td>";
+    echo "</tr>";
     if ($i == 5) {
         break;
     }
