@@ -14,16 +14,20 @@ $fechaNacimiento = date_create("1989-07-05");
 $dia = date_format($fechaNacimiento, "d");
 $mes = date_format($fechaNacimiento, "m");
 $year = date_format($fechaNacimiento, "Y");
-$total;
-$numeroMagico = 0;
 
-$total = $dia + $mes + $year;
+$sumFecha = $dia + $mes + $year;
+$sum = 0;
 
-for ($i = 0; strlen($total) > $i;$i++) {
-    $numeroMagico = $numeroMagico + substr($total, $i, 1);
-}
+do {
+    if($sumFecha == 0) {
+        $sumFecha = $sum;
+        $sum = 0;
+    }
+    $sum += $sumFecha % 10;
+    $sumFecha = (int)($sumFecha / 10);
+} while ($sumFecha >= 1 || $sum > 9);
 
-echo "Número mágico: " . $numeroMagico;
+echo("Número mágico: " . $sum);
 
 ?>
 </body>
