@@ -12,9 +12,9 @@
 $num = 1;
 for ($i=1; $i<=10; $i++) {
     if ($i % 2 == 0){ 
-        echo "<tr bgcolor=#7de15e>";
-    }else{
         echo "<tr>";
+    }else{
+        echo "<tr bgcolor=#7de15e>";
     }
     for ($j=1; $j<=10; $j++) {
         echo "<td>". $num . "</td>";

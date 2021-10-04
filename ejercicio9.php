@@ -9,7 +9,7 @@
 <body>
 <?php
 
-$fechaNacimiento = date_create("2003-02-25");
+$fechaNacimiento = date_create("2003-10-03");
 
 $dia = date_format($fechaNacimiento, "d");
 $mes = date_format($fechaNacimiento, "m");
@@ -29,14 +29,6 @@ $dia_diferencia   = $diaActual - $dia;
 
 if ($dia_diferencia < 0 || $mes_diferencia < 0) {
   $year_diferencia--;
-}
-
-if ($edadYear >= 18) {
-    echo "Puede pasar dentro";
-} else if ($edadYear < 18) {
-    echo "No puede pasar";
-} else if ($edadYear > 65) {
-    echo "Es demasiado mayor para entrar";
 }
 
 if ($year_diferencia >= 18) {
