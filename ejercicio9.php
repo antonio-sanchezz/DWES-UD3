@@ -9,46 +9,18 @@
 <body>
 <?php
 
-/*
-
-Otra forma de hacerlo.
-
-$fecha_nacimiento = new DateTime("2003-10-03");
+$fechaNacimiento = new DateTime("2003-10-03");
 
 $hoy = new DateTime();
-$edad = $hoy->diff($fecha_nacimiento);
+$edad = $hoy->diff($fechaNacimiento);
 
-echo "Edad" . $edad;
+echo "Edad: " . $edad->y . "<br>";
 
-*/
-
-$fechaNacimiento = date_create("2003-10-03");
-
-$dia = date_format($fechaNacimiento, "d");
-$mes = date_format($fechaNacimiento, "m");
-$year = date_format($fechaNacimiento, "Y");
-
-$diaActual = date("d");
-$mesActual = date("m");
-$yearActual = date("Y");
-
-$edadYear = $yearActual - $year;
-
-echo $dia . "/" . $mes . "/" . $year . "<br>";
-
-$year_diferencia  = $yearActual - $year;
-$mes_diferencia = $mesActual - $mes;
-$dia_diferencia   = $diaActual - $dia;
-
-if ($dia_diferencia < 0 || $mes_diferencia < 0) {
-  $year_diferencia--;
-}
-
-if ($year_diferencia >= 18) {
+if ($edad->y >= 18 && $edad->y < 65) {
     echo "Puede pasar dentro";
-} else if ($year_diferencia < 18) {
+} else if ($edad->y < 18) {
     echo "No puede pasar";
-} else if ($year_diferencia > 65) {
+} else if ($edad->y >= 65) {
     echo "Es demasiado mayor para entrar";
 }
 
