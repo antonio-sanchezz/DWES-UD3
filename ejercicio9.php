@@ -9,6 +9,19 @@
 <body>
 <?php
 
+/*
+
+Otra forma de hacerlo.
+
+$fecha_nacimiento = new DateTime("2003-10-03");
+
+$hoy = new DateTime();
+$edad = $hoy->diff($fecha_nacimiento);
+
+echo "Edad" . $edad;
+
+*/
+
 $fechaNacimiento = date_create("2003-10-03");
 
 $dia = date_format($fechaNacimiento, "d");
