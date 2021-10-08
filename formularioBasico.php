@@ -42,12 +42,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p>
             <label for="usuario">Usuario</label>
             <input type="text" name="usuario" required/>
-            <span style="color:red">*</span><?php echo $errorName ?>
+            <span style="color:red"><?php echo $errorName ?></span>
         </p>
         <p>
             <label for="contrasenya">Contraseña</label>
             <input type="password" name="contrasenya" required/>
-            <span style="color:red">*</span><?php echo $errorPass ?>
+            <span style="color:red"><?php echo $errorPass ?></span>
         </p>
         <p>
 <input type="submit" name="enviar" value="Aceptar"/>

@@ -7,11 +7,21 @@
     <title>Document</title>
 </head>
 <body>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nombre = $_POST['nombre'];
+    $apellidos = $_POST['apellidos'];
+    $direccion = $_POST['direccion'];
+    $red = $_POST['red'];
+}
+?>
+
+
     <form action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" method="POST">
         <fieldset>
             <legend>Formulario de opciones</legend>
             <p>
-                <label for="nombre">Nomobre</label>
+                <label for="nombre">Nombre</label>
                 <input type="text" name="nombre"/>
             </p>
             <p>
