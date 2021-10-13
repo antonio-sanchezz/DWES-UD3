@@ -9,10 +9,47 @@
 <body>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombre = $_POST['nombre'];
-    $apellidos = $_POST['apellidos'];
-    $direccion = $_POST['direccion'];
-    $red = $_POST['red'];
+
+    if (empty($_POST['nombre']) || empty($_POST['apellidos']) || empty($_POST['direccion']) || empty($_POST['red']) || empty($_POST['instituto']) || empty($_POST['estudios_elegidos']) || empty($_POST['dias']) || empty($_POST['preferencias'])) {
+        echo "Todos los campos menos el Texto Final deben estar rellenos.";
+    } else {
+        echo "Realizado correctamente.";
+        // Comprobamos que Nombre sea seguro.
+        $nombre = stripslashes($_POST['nombre']);
+        $nombre = strip_tags($nombre);
+        $nombre = htmlspecialchars($nombre);
+
+        // Comprobamos que Apellidos sea seguro.
+        $apellidos = stripslashes($_POST['apellidos']);
+        $apellidos = strip_tags($apellidos);
+        $apellidos = htmlspecialchars($apellidos);
+
+        // Comprobamos que Direccion sea seguro.
+        $direccion = stripslashes($_POST['direccion']);
+        $direccion = strip_tags($direccion);
+        $direccion = htmlspecialchars($direccion);
+
+        $red = $_POST['red'];
+        $instituto = $_POST['instituto'];
+
+        // Comprobamos que Estudios Elegidos sea seguro.
+        $estudiosElegidos = stripslashes($_POST['estudios_elegidos']);
+        $estudiosElegidos = strip_tags($estudiosElegidos);
+        $estudiosElegidos = htmlspecialchars($estudiosElegidos);
+
+        $diasDeLaSemana = $_POST['dias'];
+        $preferencias = $_POST['preferencias'];
+
+        // Comprobamos que el Texto Final sea seguro.
+        $textoFinal = stripslashes($_POST['textoFinal']);
+        $textoFinal = strip_tags($textoFinal);
+        $textoFinal = htmlspecialchars($textoFinal);
+
+        foreach($_POST['preferencias'] as $selected){
+            echo $selected . "</br>";
+        }
+    }
+
 }
 ?>
 
@@ -60,15 +97,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </fieldset>
         <fieldset>
             <legend>Preferencias</legend>
-            <input type="checkbox" id="historia" name="historia" value="historia">
+            <input type="checkbox" id="historia" name="preferencias[]" value="historia">
             <label for="historia">Historia</label>
-            <input type="checkbox" id="geografia" name="geografia" value="geografia">
+            <input type="checkbox" id="geografia" name="preferencias[]" value="geografia">
             <label for="geografia">Geografía</label>
-            <input type="checkbox" id="lengua" name="lengua" value="lengua">
+            <input type="checkbox" id="lengua" name="preferencias[]" value="lengua">
             <label for="historia">Lengua</label>
-            <input type="checkbox" id="matematicas" name="matematicas" value="matematicas">
+            <input type="checkbox" id="matematicas" name="preferencias[]" value="matematicas">
             <label for="historia">Matemáticas</label><br>
-            <textarea id="w3review" name="w3review" rows="4" cols="50">
+            <textarea id="textoFinal" name="textoFinal" rows="4" cols="50">
             Inserte aquí el texto
             </textarea>
         </fieldset>
