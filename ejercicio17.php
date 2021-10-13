@@ -7,54 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    if (empty($_POST['nombre']) || empty($_POST['apellidos']) || empty($_POST['direccion']) || empty($_POST['red']) || empty($_POST['instituto']) || empty($_POST['estudios_elegidos']) || empty($_POST['dias']) || empty($_POST['preferencias'])) {
-        echo "Todos los campos menos el Texto Final deben estar rellenos.";
-    } else {
-        echo "Realizado correctamente.";
-        // Comprobamos que Nombre sea seguro.
-        $nombre = stripslashes($_POST['nombre']);
-        $nombre = strip_tags($nombre);
-        $nombre = htmlspecialchars($nombre);
-
-        // Comprobamos que Apellidos sea seguro.
-        $apellidos = stripslashes($_POST['apellidos']);
-        $apellidos = strip_tags($apellidos);
-        $apellidos = htmlspecialchars($apellidos);
-
-        // Comprobamos que Direccion sea seguro.
-        $direccion = stripslashes($_POST['direccion']);
-        $direccion = strip_tags($direccion);
-        $direccion = htmlspecialchars($direccion);
-
-        $red = $_POST['red'];
-        $instituto = $_POST['instituto'];
-
-        // Comprobamos que Estudios Elegidos sea seguro.
-        $estudiosElegidos = stripslashes($_POST['estudios_elegidos']);
-        $estudiosElegidos = strip_tags($estudiosElegidos);
-        $estudiosElegidos = htmlspecialchars($estudiosElegidos);
-
-        $diasDeLaSemana = $_POST['dias'];
-        $preferencias = $_POST['preferencias'];
-
-        // Comprobamos que el Texto Final sea seguro.
-        $textoFinal = stripslashes($_POST['textoFinal']);
-        $textoFinal = strip_tags($textoFinal);
-        $textoFinal = htmlspecialchars($textoFinal);
-
-        foreach($_POST['preferencias'] as $selected){
-            echo $selected . "</br>";
-        }
-    }
-
-}
-?>
-
-
-    <form action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" method="POST">
+    <form action="datos17.php" method="POST">
         <fieldset>
             <legend>Formulario de opciones</legend>
             <p>
@@ -85,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="estudios_elegidos">Estudios elegidos</label>
                 <input type="text" name="estudios_elegidos"/>
             </p>
-            <select name="dias" id="dias" multiple>
+            <select name="dias[]" multiple>
                 <option value="lunes">Lunes</option>
                 <option value="martes">Martes</option>
                 <option value="miercoles">Miércoles</option>
