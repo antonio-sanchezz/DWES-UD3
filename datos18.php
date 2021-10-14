@@ -28,7 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errorProvincia = "Indique una provincia.";
     }
 
-    $rutaImagen = $_FILES['imagen']['name'];
+    //$rutaImagen = $_FILES['imagen']['name'];
+    
     $descripcionMunicipio = $_POST['descripcionMunicipio'];
 
     // Hacemos seguro el campo de Descripcion del municipio.
