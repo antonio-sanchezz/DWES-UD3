@@ -29,8 +29,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errorPoblacion = "Indique una población.";
     }
 
+    // Comprobamos que la poblacion es un texto.
+    if(!preg_match("/[A-Z][a-z]/", $poblacion) && !empty($poblacion)) {
+        $errorPoblacion = "La poblacion debe ser de tipo texto.";
+        // En caso de que no lo sea vaciamos el campo.
+        $poblacion = "";
+    }
+
     if (empty($codigoPostal)) {
         $errorCodigoPostal = "Indique un código postal.";
+    }
+
+    // Comprobamos que el codigo postal es un valor numérico.
+    if(!is_numeric($codigoPostal) && !empty($codigoPostal)) {
+        $errorCodigoPostal = "El código postal debe ser un valor numérico.";
+        // En caso de que no lo sea vaciamos el campo.
+        $codigoPostal = "";
     }
 
     if (empty($provincia)) {
