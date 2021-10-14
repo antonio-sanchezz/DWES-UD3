@@ -28,11 +28,11 @@
             </p>
             <p>
                 <input type="radio" id="wifi" name="red" value="wifi" <?php if ( $red == "wifi"){ echo "checked";} ?>/>
-                <label for="html">Wifi</label>
+                <label for="wifi">Wifi</label>
                 <input type="radio" id="cable" name="red" value="cable" <?php if ( $red == "cable"){ echo "checked";} ?>/>
-                <label for="javascript">Cable</label>
+                <label for="cable">Cable</label>
                 <input type="radio" id="fibra" name="red" value="fibra" <?php if ( $red== "fibra"){ echo "checked";} ?>/>
-                <label for="javascript">Fibra</label>
+                <label for="fibra">Fibra</label>
                 <span style="color:red"><?php echo $errorRed?></span>
             </p>
             <p>
