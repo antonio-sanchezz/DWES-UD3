@@ -7,49 +7,48 @@
     <title>Document</title>
 </head>
 <body>
-    <?php include_once 'datos17.php';?>
-    <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
+    <form action="correcto.php" method="POST" enctype="multipart/form-data">
         <fieldset>
-            <legend>Formulario de opciones</legend>
+            <legend>Formulario</legend>
             <p>
                 <label for="poblacion">Población</label>
-                <input type="text" name="poblacion" value="<?php echo $nombre?>"/>
-                <span style="color:red"><?php echo $errorNombre?></span>
+                <input type="text" name="poblacion"/>
             </p>
             <p>
                 <label for="codigoPostal">Código Postal</label>
-                <input type="number" name="codigoPostal" value="<?php echo $apellidos?>"/>
-                <span style="color:red"><?php echo $errorApellidos?></span>
+                <input type="number" name="codigoPostal"/>
             </p>
             <p>
-                <input type="provincia" id="wifi" name="red" value="wifi" <?php if ( $red == "wifi"){ echo "checked";} ?>/>
+                <input type="radio" id="wifi" name="provincia" value="wifi"/>
                 <label for="html">Wifi</label>
-                <input type="provincia" id="cable" name="red" value="cable" <?php if ( $red == "cable"){ echo "checked";} ?>/>
+                <input type="radio" id="cable" name="provincia" value="cable"/>
                 <label for="javascript">Cable</label>
-                <input type="provincia" id="fibra" name="red" value="fibra" <?php if ( $red== "fibra"){ echo "checked";} ?>/>
+                <input type="radio" id="fibra" name="provincia" value="fibra"/>
                 <label for="javascript">Fibra</label>
-                <input type="provincia" id="fibra" name="red" value="fibra" <?php if ( $red== "fibra"){ echo "checked";} ?>/>
+                <input type="radio" id="fibra" name="provincia" value="fibra"/>
                 <label for="javascript">Fibra</label>
-                <input type="provincia" id="fibra" name="red" value="fibra" <?php if ( $red== "fibra"){ echo "checked";} ?>/>
+                <input type="radio" id="fibra" name="provincia" value="fibra"/>
                 <label for="javascript">Fibra</label>
-                <input type="provincia" id="fibra" name="red" value="fibra" <?php if ( $red== "fibra"){ echo "checked";} ?>/>
+                <input type="radio" id="fibra" name="provincia" value="fibra"/>
                 <label for="javascript">Fibra</label>
-                <input type="provincia" id="fibra" name="red" value="fibra" <?php if ( $red== "fibra"){ echo "checked";} ?>/>
+                <input type="radio" id="fibra" name="provincia" value="fibra"/>
                 <label for="javascript">Fibra</label>
-                <input type="provincia" id="fibra" name="red" value="fibra" <?php if ( $red== "fibra"){ echo "checked";} ?>/>
+                <input type="radio" id="fibra" name="provincia" value="fibra"/>
                 <label for="javascript">Fibra</label>
-                <span style="color:red"><?php echo $errorRed?></span>
             </p>
             <fieldset>
             <legend>Descripción del municipio</legend>
-            <span style="color:red"><?php echo $errorPreferencia?></span>
+            <span style="color:red"></span>
             <textarea id="descripcionMunicipio" name="descripcionMunicipio" rows="4" cols="50">
-            <?php echo $textoFinal?>
             </textarea>
         </fieldset>
         <p>
-<input type="submit" name="enviar" value="Aceptar"/>
-  </p>
+        <input type="file" name="imagen" id="imagen">
+        </p>
+        <p>
+            <input type="submit" name="enviar" value="Aceptar"/>
+            <input type="reset" name="reset" value="Borrar"/>
+        </p>
     </form>
 <?php
 
