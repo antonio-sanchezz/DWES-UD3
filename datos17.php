@@ -1,63 +1,89 @@
 <?php
-if (empty($_POST['nombre']) || empty($_POST['apellidos']) || empty($_POST['direccion']) || empty($_POST['red']) || empty($_POST['instituto']) || empty($_POST['estudios_elegidos']) || empty($_POST['dias']) || empty($_POST['preferencias'])) {
-        echo "Todos los campos menos el Texto Final deben estar rellenos.";
-    } else {
+$nombre = "";
+$apellidos = "";
+$direccion = "";
+$estudiosElegidos = "";
+$instituto = "";
+$textoFinal = "";
+$errorNombre = "";
+$errorApellidos = "";
+$errorDireccion = "";
+$errorEstudiosElegidos = "";
+$errorInstituto = "";
+$errorRed = "";
+$errorPreferencia = "";
+$errorDias = "";
+$red = "";
+$dias = [];
+$preferencias = [];
 
-        // Comprobamos que Nombre sea seguro.
-        $nombre = stripslashes($_POST['nombre']);
-        $nombre = strip_tags($nombre);
-        $nombre = htmlspecialchars($nombre);
-
-        echo "Nombre: " . $nombre . "<br>";
-
-        // Comprobamos que Apellidos sea seguro.
-        $apellidos = stripslashes($_POST['apellidos']);
-        $apellidos = strip_tags($apellidos);
-        $apellidos = htmlspecialchars($apellidos);
-
-        echo "Apellidos: " . $apellidos . "<br>";
-
-        // Comprobamos que Direccion sea seguro.
-        $direccion = stripslashes($_POST['direccion']);
-        $direccion = strip_tags($direccion);
-        $direccion = htmlspecialchars($direccion);
-
-        echo "Dirección: " . $direccion . "<br>";
-
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nombre = $_POST['nombre'];
+    $apellidos = $_POST['apellidos'];
+    $direccion = $_POST['direccion'];
+    if (isset($_POST['red'])) {
         $red = $_POST['red'];
-
-        echo "Red: " . $red . "<br>";
-
-        $instituto = $_POST['instituto'];
-
-        if(preg_match("/^(IES)/", $instituto)) {
-            echo "Instituto: " . $instituto . "<br>";
-        } else {
-            echo "El instituto debe comenzar por IES.<br>";
-        }
-
-        // Comprobamos que Estudios Elegidos sea seguro.
-        $estudiosElegidos = stripslashes($_POST['estudios_elegidos']);
-        $estudiosElegidos = strip_tags($estudiosElegidos);
-        $estudiosElegidos = htmlspecialchars($estudiosElegidos);
-
-        echo "Estudios elegidos: " . $estudiosElegidos . "<br>";
-
-        echo "Días de la semana:<br>";
-        foreach($_POST['dias'] as $dia){
-            echo $dia . "</br>";
-        }
-
-        echo "Preferencias:<br>";
-        foreach($_POST['preferencias'] as $selected){
-            echo $selected . "</br>";
-        }
-
-        // Comprobamos que el Texto Final sea seguro.
-        $textoFinal = stripslashes($_POST['textoFinal']);
-        $textoFinal = strip_tags($textoFinal);
-        $textoFinal = htmlspecialchars($textoFinal);
-
-        echo "Texto final: " . $textoFinal . "<br>";
     }
+    $instituto = $_POST['instituto'];
+    $estudiosElegidos = $_POST['estudios_elegidos'];
+    $textoFinal = $_POST['textoFinal'];
+    if (isset($_POST['preferencias'])) {
+        $preferencias = $_POST['preferencias'];
+    }
+    if (isset($_POST['dias'])) {
+        $dias = $_POST['dias'];
+    }
+
+        // Comprobamos la seguridad de la cadena.
+        function check($checked) {
+            $checked = stripslashes($checked);
+            $checked = strip_tags($checked);
+            $checked = htmlspecialchars($checked);
+
+            return $checked;
+        }
+
+        if (empty($red)) {
+            $errorRed = "La red no puede estar vacía.";
+        }
+
+        if (empty($nombre)) {
+            $errorNombre = "Nombre incorrecto.";
+        } else {
+            $nombre = check($nombre);
+        }
+
+        if (empty($apellidos)) {
+            $errorApellidos = "Apellido incorrecto.";
+        } else {
+            $apellidos = check($apellidos);
+        }
+
+        if (empty($direccion)) {
+            $errorDireccion = "Dirección incorrecta.";
+        } else {
+            $direccion = check($direccion);
+        }
+
+        if(!preg_match("/^(IES)/", $instituto) || empty($instituto)) {
+            $errorInstituto = "El instituto debe comenzar por IES.";
+        }
+
+        if (empty($estudiosElegidos)) {
+            $errorEstudiosElegidos = "Estudio/s incorrecto/s.";
+        } else {
+            $estudiosElegidos = check($estudiosElegidos);
+        }
+
+        if (empty($dias)) {
+            $errorDias = "Elige un dia";
+        }
+
+        if (empty($preferencias)) {
+            $errorPreferencia = "Elige una preferencia";
+        }
+
+        $textoFinal = check($textoFinal);
+
+}
     ?>
